@@ -12,7 +12,7 @@ border-radius: 18px;
 padding: 10px;
 `;
 
-export const Inputfile = ({ setVideo, setGif, gif }) => {
+export const Inputfile = ({ setVideo, setGif, gif, convertingProgress, setIsFixed }) => {
   const handleImageChange = (e) => {
     if (e.target.files[0].size > 104857600) {
       alert('File is too big, no files over ');
@@ -24,11 +24,12 @@ export const Inputfile = ({ setVideo, setGif, gif }) => {
     if(gif) {
       setGif(null);
     }
+    setIsFixed(true);
   }
 
   return (
-    <Section>
-    <input type="file" onChange={(e) => handleImageChange(e)} />
+    <Section style={convertingProgress ? {display: 'none'} : {}}>
+      <input type="file" onChange={(e) => handleImageChange(e)} />
     </Section>
   );
 };

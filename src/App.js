@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
-import { Button } from "./components/Button";
+import { ButtonUI } from "./components/Button";
 import { Inputfile } from "./components/Inputfile";
 import { Header } from "./components/Header";
 import { Resultimg } from "./components/Resultimg";
 import { Inputvideo } from "./components/Inputvideo";
 import { Dbutton } from "./components/Dbutton";
+import Footer from "./components/Footer";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import "react-step-progress-bar/styles.css";
@@ -19,6 +20,7 @@ function App() {
   const [ready, setReady] = useState(false);
   const [video, setVideo] = useState();
   const [gif, setGif] = useState();
+  const [isFixed, setIsFixed] = useState(true);
   const [convertingProgress, setConvertingProgress] = useState(null);
 
   const load = async () => {
@@ -28,6 +30,7 @@ function App() {
 
   useEffect(() => {
     load();
+    setIsFixed(true)
   }, []);
 
   const convertToGif = async () => {
@@ -64,6 +67,7 @@ function App() {
     document.querySelectorAll('input')[0].value = '';
     setVideo(null);
     setConvertingProgress(null);
+    setIsFixed(false);
   };
 
   const download = (e) => {
@@ -90,13 +94,13 @@ function App() {
     <div className="App">
     <Header />
     {(video && !convertingProgress) && <Inputvideo video={video} />}
-    <Inputfile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif}/>
+    <Inputfile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} setIsFixed={setIsFixed}/>
     
     {
       convertingProgress ?
       <div style={{textAlign: 'center', display: 'flex', justifyContent: 'center', margin: '6%'}}>
         <ProgressBar
-        percent={convertingProgress}
+        percent={convertingProgress * 2.5}
         filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
         width="60%"
         />
@@ -105,9 +109,10 @@ function App() {
       null
     }
 
-    {video && <Button convertToGif={convertToGif} />}
+    {video && <ButtonUI convertToGif={convertToGif} convertingProgress={convertingProgress}/>}
     {gif && <Resultimg gif={gif} />}
     {gif && <Dbutton gif={gif} download={download} />}
+    <Footer isFixed={isFixed}/>
     </div>
   ) : (
     
