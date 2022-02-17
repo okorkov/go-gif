@@ -46,17 +46,9 @@ function App() {
 
     // Run the FFmpeg command-line tool, converting
     // the .mp4 into .gif file
-    await ffmpeg.run(
-    "-i",
-    "video1.mp4",
-    "-t",
-    "2.5",
-    "-ss",
-    "2.0",
-    "-f",
-    "gif",
-    "out.gif"
-    )
+    // await ffmpeg.run('-i', 'video1.mp4', '-vf', 'fps=15,scale=800:-1,smartblur=ls=-1,crop=iw:ih-2:0:0', 'out.gif')
+    await ffmpeg.run('-i', 'video1.mp4', '-filter_complex', '[0:v] fps=15,scale=w=800:h=-1,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1', 'out.gif')
+
     
     // Read the .gif file back from the FFmpeg file system
     const data = ffmpeg.FS("readFile", "out.gif");
@@ -100,7 +92,7 @@ function App() {
       convertingProgress ?
       <div style={{textAlign: 'center', display: 'flex', justifyContent: 'center', margin: '6%'}}>
         <ProgressBar
-        percent={convertingProgress * 2.5}
+        percent={convertingProgress}
         filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
         width="60%"
         />
