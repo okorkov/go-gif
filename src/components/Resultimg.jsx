@@ -2,7 +2,8 @@ import React from "react";
 import styled from 'styled-components';
 
 const Img = styled.img`
-width: 50%;
+width: 1000px;
+max-width: 60%;
 height: 100%;
 border: 4px solid #000;
 margin: 40px auto;
