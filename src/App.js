@@ -71,21 +71,21 @@ const download = (e) => {
 	});
 };
 
-return ready ? (
-	<div className="App">
-	<Header />
-	{video && <Inputvideo video={video} />}
-	<Inputfile setVideo={setVideo} />
-	<Button convertToGif={convertToGif} />
-	<h1>Result</h1>
-	{gif && <Resultimg gif={gif} />}
-	{gif && <Dbutton gif={gif} download={download} />}
-	</div>
-) : (
-	
-<p>Loading...</p>
+  return ready ? (
+    <div className="App">
+    <Header />
+    {video && <Inputvideo video={video} />}
+    <Inputfile setVideo={setVideo} />
+    <Button convertToGif={convertToGif} />
+    <h1>Result</h1>
+    {gif && <Resultimg gif={gif} />}
+    {gif && <Dbutton gif={gif} download={download} />}
+    </div>
+  ) : (
+    
+  <p>Loading...</p>
 
-);
+  );
 }
 
 export default App;
