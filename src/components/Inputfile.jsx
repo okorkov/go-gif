@@ -12,10 +12,23 @@ border-radius: 18px;
 padding: 10px;
 `;
 
-export const Inputfile = ({ setVideo }) => {
-return (
-	<Section>
-	<input type="file" onChange={(e) => setVideo(e.target.files?.item(0))} />
-	</Section>
-);
+export const Inputfile = ({ setVideo, setGif, gif }) => {
+  const handleImageChange = (e) => {
+    if (e.target.files[0].size > 104857600) {
+      alert('File is too big, no files over ');
+      document.querySelectorAll('input')[0].value = '';
+      return null;
+    }
+
+    setVideo(e.target.files?.item(0));
+    if(gif) {
+      setGif(null);
+    }
+  }
+
+  return (
+    <Section>
+    <input type="file" onChange={(e) => handleImageChange(e)} />
+    </Section>
+  );
 };

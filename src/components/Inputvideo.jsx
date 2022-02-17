@@ -8,5 +8,5 @@ border: 1px dashed #045ca3;
 `;
 
 export const Inputvideo = ({ video }) => {
-return <Video controls width="250" src={URL.createObjectURL(video)} />;
+return <Video controls width="500" src={URL.createObjectURL(video)} />;
 };
