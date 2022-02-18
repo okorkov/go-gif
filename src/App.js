@@ -30,7 +30,7 @@ function App() {
 
   useEffect(() => {
     load();
-    setIsFixed(true)
+    setIsFixed(true);
   }, []);
 
   const convertToGif = async () => {
@@ -45,9 +45,9 @@ function App() {
     });
     // Run the FFmpeg command-line tool, converting
     // the .mp4 into .gif file
+    
     // await ffmpeg.run('-i', 'video1.mp4', '-vf', 'fps=12,scale=900:-1:flags=lanczos,crop=iw:ih-2:0:0', 'out.gif')
 
-    // await ffmpeg.run('-i', 'video1.mp4', '-filter_complex', '[0:v] fps=20,scale=w=800:h=-1,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1', 'out.gif')
     await ffmpeg.run('-i', 'video1.mp4', '-filter_complex', '[0:v] fps=15,scale=800:-1,split [a][b];[a] palettegen=stats_mode=full [p];[b][p] paletteuse=new=1', 'out.gif')
 
 
