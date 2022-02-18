@@ -14,7 +14,7 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar } from "react-step-progress-bar";
 
 // Create the FFmpeg instance and load it
-const ffmpeg = createFFmpeg({ log: true, corePath: "/ffmpeg_core_dist/ffmpeg-core.js" });
+const ffmpeg = createFFmpeg({ log: true, corePath: 'https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js', });
 
 function App() {
   const [ready, setReady] = useState(false);
@@ -22,6 +22,7 @@ function App() {
   const [gif, setGif] = useState();
   const [isFixed, setIsFixed] = useState(true);
   const [convertingProgress, setConvertingProgress] = useState(null);
+  const [showNotSupportedMessage, setShowNotSupportedMessage] = useState(false);
 
   const load = async () => {
     await ffmpeg.load();
@@ -31,6 +32,10 @@ function App() {
   useEffect(() => {
     load();
     setIsFixed(true);
+    const FFMPEG_NOT_SUPPORTED_MESSAGE = setInterval(function () {
+      setShowNotSupportedMessage(true);
+     return  clearInterval(FFMPEG_NOT_SUPPORTED_MESSAGE);
+   }, 4000);
   }, []);
 
   const convertToGif = async () => {
@@ -110,10 +115,20 @@ function App() {
     <Footer isFixed={isFixed}/>
     </div>
   ) : (
-    
-    <Box sx={{ display: 'flex' }} style={{position: 'fixed', top: '45%', left: '45%', zIndex: '9999', zoom: '3'}}>
-      <CircularProgress />
-    </Box>
+    <>
+      <Box sx={{ display: 'flex' }} style={{position: 'fixed', top: '45%', left: '45%', zIndex: '9999', zoom: '3'}}>
+        <CircularProgress />
+      </Box>
+      {
+        showNotSupportedMessage ?
+          <div style={{ textAlign: 'center'}}>
+            <p>Seems Like Your Browser Doesn't Support it yet...</p>
+            <p>Please Use Google Chrome</p>
+          </div>
+          :
+          null
+      }
+    </>
   );
 }
 
