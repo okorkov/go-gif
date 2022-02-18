@@ -13,7 +13,7 @@ font-size: 3em;
 export const Header = () => {
 return (
 	<div>
-	<H1>video to gif converter</H1>
+	<H1>video to gif converter go/gifin</H1>
 	</div>
 );
 };
