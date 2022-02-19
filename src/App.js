@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 import { ButtonUI } from "./components/Button";
-import { Inputfile } from "./components/Inputfile";
+import { InputFile } from "./components/InputFile";
 import { Header } from "./components/Header";
-import { Resultimg } from "./components/Resultimg";
-import { Inputvideo } from "./components/Inputvideo";
-import { Dbutton } from "./components/Dbutton";
+import { ResultImg } from "./components/ResultImg";
+import { InputVideo } from "./components/InputVideo";
+import { DownloadButton } from "./components/DownloadButton";
 import Footer from "./components/Footer";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
@@ -91,10 +90,10 @@ function App() {
   };
 
   return ready ? (
-    <div className="App">
+    <div className="App" style={{textAlign: "center"}}>
     <Header />
-    {(video && !convertingProgress) && <Inputvideo video={video} />}
-    <Inputfile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} setIsFixed={setIsFixed}/>
+    {(video && !convertingProgress) && <InputVideo video={video} />}
+    <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} setIsFixed={setIsFixed}/>
     
     {
       convertingProgress ?
@@ -110,8 +109,8 @@ function App() {
     }
 
     {video && <ButtonUI convertToGif={convertToGif} convertingProgress={convertingProgress}/>}
-    {gif && <Resultimg gif={gif} />}
-    {gif && <Dbutton gif={gif} download={download} />}
+    {gif && <ResultImg gif={gif} />}
+    {gif && <DownloadButton gif={gif} download={download} />}
     <Footer isFixed={isFixed}/>
     </div>
   ) : (

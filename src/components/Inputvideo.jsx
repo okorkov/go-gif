@@ -1,12 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 
-const Video = styled.video`
-width: 40%;
-margin: 20px;
-border: 1px dashed #045ca3;
-`;
+const styles = {
+  width: '40%',
+  margin: '20px',
+  border: '1px dashed #045ca3'
+}
 
-export const Inputvideo = ({ video }) => {
-return <Video controls width="500" src={URL.createObjectURL(video)} />;
+export const InputVideo = ({ video }) => {
+  return <video controls width="500" style={styles} src={URL.createObjectURL(video)} />;
 };

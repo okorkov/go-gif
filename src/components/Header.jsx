@@ -1,19 +1,14 @@
 import React from "react";
-import styled from "styled-components";
 
-const H1 = styled.h1`
-margin: 0;
-padding: 12px;
-background-color: #004b7c;
-color: #fff;
-font-family: sans-serif;
-font-size: 3em;
-`;
+const styles = {
+	margin: '0',
+	padding: '12px',
+	backgroundColor: '#004b7c',
+	color: '#fff',
+	fontFamily: 'sans-serif',
+	fontZize: '3em'
+}
 
 export const Header = () => {
-return (
-	<div>
-	<H1>video to gif converter go/gifin</H1>
-	</div>
-);
+	return (<h1 style={styles}>video to gif converter go/gifin</h1>);
 };
