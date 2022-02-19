@@ -11,6 +11,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import "react-step-progress-bar/styles.css";
 import { ProgressBar } from "react-step-progress-bar";
+import HelpIcon from './components/help-modal/HelpIcon';
 
 // Create the FFmpeg instance and load it
 const ffmpeg = createFFmpeg({ log: true, corePath: 'https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js', });
@@ -49,10 +50,14 @@ function App() {
     });
     // Run the FFmpeg command-line tool, converting
     // the .mp4 into .gif file
-    
-    // await ffmpeg.run('-i', 'video1.mp4', '-vf', 'fps=12,scale=900:-1:flags=lanczos,crop=iw:ih-2:0:0', 'out.gif')
 
-    await ffmpeg.run('-i', 'video1.mp4', '-filter_complex', '[0:v] fps=15,scale=800:-1,split [a][b];[a] palettegen=stats_mode=full [p];[b][p] paletteuse=new=1', 'out.gif')
+    await ffmpeg.run(
+      '-i',
+      'video1.mp4',
+      '-filter_complex',
+      '[0:v] fps=15,scale=800:-1,split [a][b];[a] palettegen=stats_mode=full [p];[b][p] paletteuse=new=1',
+      'out.gif'
+    )
 
 
 
@@ -92,6 +97,7 @@ function App() {
   return ready ? (
     <div className="App" style={{textAlign: "center"}}>
     <Header />
+    <HelpIcon />
     {(video && !convertingProgress) && <InputVideo video={video} />}
     <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} setIsFixed={setIsFixed}/>
     
