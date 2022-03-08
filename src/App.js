@@ -55,7 +55,7 @@ function App() {
       '-i',
       'video1.mp4',
       '-filter_complex',
-      '[0:v] fps=15,scale=800:-1,split [a][b];[a] palettegen=stats_mode=full [p];[b][p] paletteuse=new=1',
+      '[0:v] fps=10,scale=800:-1,split [a][b];[a] palettegen=stats_mode=full [p];[b][p] paletteuse=new=1',
       'out.gif'
     )
 
