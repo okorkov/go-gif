@@ -17,6 +17,7 @@ import HelpIcon from './components/help-modal/HelpIcon';
 const ffmpeg = createFFmpeg({ log: true, corePath: 'https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js', });
 
 function App() {
+  const [FPS, setFPS] = useState(10);
   const [ready, setReady] = useState(false);
   const [video, setVideo] = useState();
   const [gif, setGif] = useState();
@@ -55,7 +56,7 @@ function App() {
       '-i',
       'video1.mp4',
       '-filter_complex',
-      '[0:v] fps=10,scale=800:-1,split [a][b];[a] palettegen=stats_mode=full [p];[b][p] paletteuse=new=1',
+      `[0:v] fps=${FPS},scale=800:-1,split [a][b];[a] palettegen=stats_mode=full [p];[b][p] paletteuse=new=1`,
       'out.gif'
     )
 
@@ -98,7 +99,7 @@ function App() {
     <div className="App" style={{textAlign: "center"}}>
     <Header />
     <HelpIcon />
-    {(video && !convertingProgress) && <InputVideo video={video} />}
+    {(video && !convertingProgress) && <InputVideo video={video} setFPS={setFPS}/>}
     <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} setIsFixed={setIsFixed}/>
     
     {
