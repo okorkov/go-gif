@@ -13,7 +13,7 @@ export const InputFile = ({ setVideo, setGif, gif, convertingProgress, setIsFixe
   }
 
   const handleImageChange = (e) => {
-    if (e.target.files[0].size > 104857600) {
+    if (e.target.files[0].size > 204857600) {
       alert('File is too big, no files over ');
       document.querySelectorAll('input')[0].value = '';
       return null;
@@ -29,7 +29,7 @@ export const InputFile = ({ setVideo, setGif, gif, convertingProgress, setIsFixe
 
   return (
     <div style={convertingProgress ? {display: 'none'} : styles}>
-      <input type="file" onChange={(e) => handleImageChange(e)} />
+      <input type="file" accept="video/mp4,video/x-m4v,video/*" onChange={(e) => handleImageChange(e)} />
     </div>
   );
 };
