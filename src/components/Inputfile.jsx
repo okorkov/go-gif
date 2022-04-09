@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonUI } from './Button';
 
-export const InputFile = ({ setVideo, setGif, gif, convertingProgress, video, convertToGif }) => {
+export const InputFile = ({ setVideo, setGif, gif, convertingProgress, video, convertToGif, setVideoDuration }) => {
   const styles = {
     display: 'flex',
     left: '0',
@@ -21,6 +21,7 @@ export const InputFile = ({ setVideo, setGif, gif, convertingProgress, video, co
     }
 
     setVideo(e.target.files?.item(0));
+    setVideoDuration(0);
     
     if(gif) {
       setGif(null);

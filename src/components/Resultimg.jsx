@@ -9,10 +9,10 @@ const styles = {
   boxShadow: '7px 4px 8px 0 rgba(0, 0, 0, 0.2), 10px 6px 20px 0 rgba(0, 0, 0, 0.19)'
 }
 
-export const ResultImg = ({ gif, FPS }) => {
+export const ResultImg = ({ gif, FPS, videoDuration }) => {
   return (
     <>
-      <p className="lead">Processing Frame Rate: <strong>{FPS}</strong> FPS</p>
+      <p className="lead">Processing Frame Rate: <strong>{FPS}</strong> FPS From <strong>{videoDuration}</strong> Seconds Video</p>
       <img style={styles} src={gif} alt="processed-gif"/>
     </>
   );

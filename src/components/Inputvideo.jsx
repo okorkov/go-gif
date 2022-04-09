@@ -7,12 +7,13 @@ const styles = {
   boxShadow: '7px 4px 8px 0 rgba(0, 0, 0, 0.2), 10px 6px 20px 0 rgba(0, 0, 0, 0.19)'
 }
 
-export const InputVideo = ({ video, setFPS }) => {
+export const InputVideo = ({ video, setFPS, setVideoDuration }) => {
 
   React.useEffect(() => {
     const uploadedVideo = document.getElementById("video");
     uploadedVideo.onloadedmetadata = function() {
       assingFPSBasedOffDuration(this.duration);
+      setVideoDuration(Math.round(this.duration));
     };
   });
 
