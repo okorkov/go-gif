@@ -12,7 +12,7 @@ const styles = {
 export const ResultImg = ({ gif, FPS, videoDuration }) => {
   return (
     <>
-      <p className="lead">Processing Frame Rate: <strong>{FPS}</strong> FPS From <strong>{videoDuration}</strong> Seconds Video</p>
+      <p className="lead">Processing Frame Rate: <strong>{FPS}</strong> FPS From <strong>{videoDuration}</strong> Second Video</p>
       <img style={styles} src={gif} alt="processed-gif"/>
     </>
   );
