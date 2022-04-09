@@ -21,7 +21,6 @@ const ffmpeg = createFFmpeg({ log: true, corePath: 'https://unpkg.com/@ffmpeg/co
 
 function App() {
   const [FPS, setFPS] = useState(10);
-  const [showSuccessProcessMessage, setShowSuccessProcessMessage] = useState(false);
   const [ready, setReady] = useState(false);
   const [video, setVideo] = useState();
   const [gif, setGif] = useState();
@@ -117,7 +116,7 @@ function App() {
     <Header />
     <HelpIcon />
     {(video && !convertingProgress) && <InputVideo video={video} setFPS={setFPS}/>}
-    {gif && <ResultImg gif={gif} />}
+    {gif && <ResultImg gif={gif} FPS={FPS}/>}
     {gif && <DownloadButton gif={gif} download={download} />}
 
     <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} video={video}/>
