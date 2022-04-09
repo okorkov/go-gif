@@ -21,7 +21,6 @@ function App() {
   const [ready, setReady] = useState(false);
   const [video, setVideo] = useState();
   const [gif, setGif] = useState();
-  const [isFixed, setIsFixed] = useState(true);
   const [convertingProgress, setConvertingProgress] = useState(null);
   const [showNotSupportedMessage, setShowNotSupportedMessage] = useState(false);
 
@@ -32,7 +31,6 @@ function App() {
 
   useEffect(() => {
     load();
-    setIsFixed(true);
     const FFMPEG_NOT_SUPPORTED_MESSAGE = setInterval(function () {
       setShowNotSupportedMessage(true);
      return  clearInterval(FFMPEG_NOT_SUPPORTED_MESSAGE);
@@ -72,7 +70,6 @@ function App() {
     document.querySelectorAll('input')[0].value = '';
     setVideo(null);
     setConvertingProgress(null);
-    setIsFixed(false);
   };
 
   const download = (e) => {
@@ -100,7 +97,7 @@ function App() {
     <Header />
     <HelpIcon />
     {(video && !convertingProgress) && <InputVideo video={video} setFPS={setFPS}/>}
-    <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} setIsFixed={setIsFixed}/>
+    <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} video={video}/>
     
     {
       convertingProgress ?
@@ -118,7 +115,7 @@ function App() {
     {video && <ButtonUI convertToGif={convertToGif} convertingProgress={convertingProgress}/>}
     {gif && <ResultImg gif={gif} />}
     {gif && <DownloadButton gif={gif} download={download} />}
-    <Footer isFixed={isFixed}/>
+    <Footer />
     </div>
   ) : (
     <>

@@ -12,7 +12,7 @@ export const ButtonUI = ({ convertToGif, convertingProgress }) => {
         convertingProgress ? 
           <Button variant="contained" disabled>{refinedPercents === '0' ? (<> <p>Starting Conversion</p> <CircularProgress style={{zoom: '0.5', marginLeft: '15px'}}/> </>) : `Converted ${refinedPercents}%`}</Button>
           :
-          <Button variant="contained" onClick={convertToGif}>Convert</Button>
+          <Button variant="contained" style={{background: 'rgb(0, 75, 124)'}}onClick={convertToGif}>Looks Good, Convert!</Button>
       }
     </>
   );

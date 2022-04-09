@@ -1,14 +1,13 @@
 import React from "react";
 
-const styles = {
-	margin: '0',
-	padding: '12px',
-	backgroundColor: '#004b7c',
-	color: '#fff',
-	fontFamily: 'sans-serif',
-	fontZize: '3em'
-}
-
 export const Header = () => {
-	return (<h1 style={styles}>video to gif converter go/gifin</h1>);
+	return (
+		<div class="jumbotron jumbotron-fluid" style={{background: '#004B7C'}}>
+			<div class="container">
+				<h1 class="display-4 text-white">go/gifin</h1>
+				<p class="lead text-white">- video to gif converter | fast, efficient, convenient -</p>
+				<hr class="my-4" style={{background: 'white'}}/>
+			</div>
+		</div>
+	);
 };
