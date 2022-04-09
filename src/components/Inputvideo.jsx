@@ -3,7 +3,8 @@ import React from "react";
 const styles = {
   width: '40%',
   margin: '20px',
-  border: '2px solid #045ca3'
+  border: '2px solid #045ca3',
+  boxShadow: '7px 4px 8px 0 rgba(0, 0, 0, 0.2), 10px 6px 20px 0 rgba(0, 0, 0, 0.19)'
 }
 
 export const InputVideo = ({ video, setFPS }) => {

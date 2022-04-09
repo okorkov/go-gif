@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
-import { ButtonUI } from "./components/Button";
 import { InputFile } from "./components/InputFile";
 import { Header } from "./components/Header";
 import { ResultImg } from "./components/ResultImg";
 import { InputVideo } from "./components/InputVideo";
 import { DownloadButton } from "./components/DownloadButton";
 import Footer from "./components/Footer";
-import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import "react-step-progress-bar/styles.css";
-import { ProgressBar } from "react-step-progress-bar";
 import HelpIcon from './components/help-modal/HelpIcon';
+import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
+import Snackbar from '@mui/material/Snackbar';
+import { CircularProgress } from '@mui/material';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 // Create the FFmpeg instance and load it
 const ffmpeg = createFFmpeg({ log: true, corePath: 'https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js', });
 
 function App() {
   const [FPS, setFPS] = useState(10);
+  const [showSuccessProcessMessage, setShowSuccessProcessMessage] = useState(false);
   const [ready, setReady] = useState(false);
   const [video, setVideo] = useState();
   const [gif, setGif] = useState();
@@ -92,30 +96,59 @@ function App() {
     });
   };
 
+  function LinearProgressWithLabel(props) {
+    return (
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ width: '100%', mr: 1 }}>
+          <LinearProgress variant="determinate" {...props} />
+        </Box>
+        <Box sx={{ minWidth: 35 }}>
+          <Typography variant="body2" color="text.secondary">{`${Math.round(
+            props.value,
+          )}%`}</Typography>
+        </Box>
+      </Box>
+    );
+  }
+
+
   return ready ? (
     <div className="App" style={{textAlign: "center"}}>
     <Header />
     <HelpIcon />
     {(video && !convertingProgress) && <InputVideo video={video} setFPS={setFPS}/>}
+    {gif && <ResultImg gif={gif} />}
+    {gif && <DownloadButton gif={gif} download={download} />}
+
     <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} video={video}/>
-    
+
     {
       convertingProgress ?
       <div style={{textAlign: 'center', display: 'flex', justifyContent: 'center', margin: '6%'}}>
-        <ProgressBar
-        percent={convertingProgress}
-        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
-        width="60%"
-        />
+      <Box sx={{ width: '100%', maxWidth: '800px' }}>
+        { convertingProgress === "00" ?
+          <>
+            <CircularProgress />
+            <p className="blockquote-footer" style={{paddingTop: '5%'}}>Conversion will start after video upload</p>
+          </>
+          :
+          <LinearProgressWithLabel value={convertingProgress} />
+        }
+        {convertingProgress === "00" ? 
+          <Snackbar
+            open={convertingProgress === "00"}
+            message={"Uploading your video before processing, please wait..."}
+            key=""
+          />
+          : null}
+      </Box>
       </div>
       :
       null
     }
-
-    {video && <ButtonUI convertToGif={convertToGif} convertingProgress={convertingProgress}/>}
-    {gif && <ResultImg gif={gif} />}
-    {gif && <DownloadButton gif={gif} download={download} />}
+    
     <Footer />
+
     </div>
   ) : (
     <>

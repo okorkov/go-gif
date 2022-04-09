@@ -1,6 +1,7 @@
 import React from "react";
+import { ButtonUI } from './Button';
 
-export const InputFile = ({ setVideo, setGif, gif, convertingProgress, video }) => {
+export const InputFile = ({ setVideo, setGif, gif, convertingProgress, video, convertToGif }) => {
   const styles = {
     display: 'flex',
     left: '0',
@@ -31,7 +32,10 @@ export const InputFile = ({ setVideo, setGif, gif, convertingProgress, video }) 
       <div class="input-group mb-3">
         <div class="custom-file">
           <input type="file" class="custom-file-input" id="inputGroupFile02" accept="video/mp4,video/x-m4v,video/*" onChange={(e) => handleImageChange(e)}/>
-          <label class="custom-file-label" for="inputGroupFile02">{video ? 'you can choose another file by clicking here' : 'click here to choose a file'}</label>
+          <label class="custom-file-label" for="inputGroupFile02">{video ? 'Choose Different Video' : 'Click Here To Choose File'}</label>
+        </div>
+        <div class="input-group-append">
+          {video && <ButtonUI convertToGif={convertToGif} />}
         </div>
       </div>
     </div>
