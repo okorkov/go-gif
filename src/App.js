@@ -13,8 +13,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
 import { CircularProgress } from '@mui/material';
-import Alert from '@mui/material/Alert';
-import Stack from '@mui/material/Stack';
+import { InitLoader } from "./components/InitLoader";
 
 // Create the FFmpeg instance and load it
 const ffmpeg = createFFmpeg({ log: true, corePath: 'https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js', });
@@ -152,12 +151,12 @@ function App() {
     </div>
   ) : (
     <>
-      <Box sx={{ display: 'flex' }} style={{position: 'fixed', top: '45%', left: '45%', zIndex: '9999', zoom: '3'}}>
-        <CircularProgress />
-      </Box>
+      <div className="init-loader">
+        <InitLoader />
+      </div>
       {
         showNotSupportedMessage ?
-          <div style={{ textAlign: 'center'}}>
+          <div style={{ textAlign: 'center', paddingTop: '5%'}}>
             <p>Seems Like Your Browser Doesn't Support it yet...</p>
             <p>Please Use Google Chrome</p>
           </div>
