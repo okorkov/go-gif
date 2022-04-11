@@ -14,8 +14,8 @@ export const InputFile = ({ setVideo, setGif, gif, convertingProgress, video, co
   }
 
   const handleImageChange = (e) => {
-    if (e.target.files[0].size > 204857600) {
-      alert('File is too big, no files over ');
+    if (e.target.files[0].size > 5e+8) {
+      alert('File is too big, no files over 500 MB');
       document.querySelectorAll('input')[0].value = '';
       return null;
     }
