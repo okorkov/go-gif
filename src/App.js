@@ -157,8 +157,8 @@ function App() {
       {
         showNotSupportedMessage ?
           <div style={{ textAlign: 'center', paddingTop: '5%'}}>
-            <p>Seems Like Your Browser Doesn't Support it yet...</p>
-            <p>Please Use Google Chrome</p>
+            <p>Seems Like Your Browser Or Device Doesn't Support it yet...</p>
+            <p>Please Use Desktop Version Of Google Chrome / Firefox</p>
           </div>
           :
           null
