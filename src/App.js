@@ -23,6 +23,7 @@ function App() {
   const [videoDuration, setVideoDuration] = useState(0);
   const [ready, setReady] = useState(false);
   const [video, setVideo] = useState();
+  const [videoName, setVideoName] = useState("");
   const [gif, setGif] = useState();
   const [convertingProgress, setConvertingProgress] = useState(null);
   const [showNotSupportedMessage, setShowNotSupportedMessage] = useState(false);
@@ -60,15 +61,12 @@ function App() {
       `[0:v] fps=${FPS},scale=1000:-1,split [a][b];[a] palettegen=stats_mode=full [p];[b][p] paletteuse=new=1`,
       'out.gif'
     )
-
-
-
-    
     // Read the .gif file back from the FFmpeg file system
     const data = ffmpeg.FS("readFile", "out.gif");
     const url = URL.createObjectURL(
-    new Blob([data.buffer], { type: "image/gif" })
+      new Blob([data.buffer], { type: "image/gif" })
     );
+    setVideoName(video.name);
     setGif(url);
     document.querySelectorAll('input')[0].value = '';
     setVideo(null);
@@ -117,7 +115,7 @@ function App() {
     <HelpIcon />
     {(video && !convertingProgress) && <InputVideo video={video} setFPS={setFPS} setVideoDuration={setVideoDuration}/>}
     {gif && <ResultImg gif={gif} FPS={FPS} videoDuration={videoDuration}/>}
-    {gif && <DownloadButton gif={gif} download={download} />}
+    {gif && <DownloadButton gif={gif} download={download} videoName={videoName}/>}
 
     <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} video={video} setVideoDuration={setVideoDuration}/>
 
