@@ -11,7 +11,7 @@ const FooterComponent = ({}) => {
         columns={[
           {
             icon: (
-              <img src="https://aokarkau.com/logo-white.png" />
+              <img src="./aokarkau_logo.png" alt="Alex Okarkau Logo"/>
             ),
             title: 'Alex Okarkau',
             url: 'https://aokarkau.com',
@@ -26,7 +26,7 @@ const FooterComponent = ({}) => {
           },
           {          
             icon: (
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png?20140125013055" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png" alt="Linkedin Logo"/>
             ),
             title: 'GoLinks',
             items: [{
