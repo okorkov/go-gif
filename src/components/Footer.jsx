@@ -6,13 +6,6 @@ const FooterComponent = ({}) => {
   return (
     <>
       <Footer
-        style={{
-          marginTop: '8%',
-          position: 'absolute',
-          bottom: '0',
-          left: '0',
-          right: '0'
-        }}
         backgroundColor="rgb(0, 75, 124)"
         columns={[
           {

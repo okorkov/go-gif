@@ -111,40 +111,42 @@ function App() {
 
   return ready ? (
     <div className="App" style={{textAlign: "center"}}>
-    <Header />
-    <HelpIcon />
-    {(video && !convertingProgress) && <InputVideo video={video} setFPS={setFPS} setVideoDuration={setVideoDuration}/>}
-    {gif && <ResultImg gif={gif} FPS={FPS} videoDuration={videoDuration}/>}
-    {gif && <DownloadButton gif={gif} download={download} videoName={videoName}/>}
+      <div className="main-content-footer-excluded">
+        <Header />
+        <HelpIcon />
+        {(video && !convertingProgress) && <InputVideo video={video} setFPS={setFPS} setVideoDuration={setVideoDuration}/>}
+        {gif && <ResultImg gif={gif} FPS={FPS} videoDuration={videoDuration}/>}
+        {gif && <DownloadButton gif={gif} download={download} videoName={videoName}/>}
 
-    <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} video={video} setVideoDuration={setVideoDuration}/>
+        <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} video={video} setVideoDuration={setVideoDuration}/>
 
-    {
-      convertingProgress ?
-      <div style={{textAlign: 'center', display: 'flex', justifyContent: 'center', margin: '6%'}}>
-      <Box sx={{ width: '100%', maxWidth: '800px' }}>
-        { convertingProgress === "00" ?
-          <>
-            <CircularProgress />
-            <p className="blockquote-footer" style={{paddingTop: '5%'}}>Conversion will start after video upload</p>
-          </>
+        {
+          convertingProgress ?
+          <div style={{textAlign: 'center', display: 'flex', justifyContent: 'center', margin: '6%'}}>
+          <Box sx={{ width: '100%', maxWidth: '800px' }}>
+            { convertingProgress === "00" ?
+              <>
+                <CircularProgress />
+                <p className="blockquote-footer" style={{paddingTop: '5%'}}>Conversion will start after video upload</p>
+              </>
+              :
+              <LinearProgressWithLabel value={convertingProgress} />
+            }
+            {convertingProgress === "00" ? 
+              <Snackbar
+                open={convertingProgress === "00"}
+                message={"Uploading your video before processing, please wait..."}
+                key=""
+              />
+              : null}
+          </Box>
+          </div>
           :
-          <LinearProgressWithLabel value={convertingProgress} />
+          null
         }
-        {convertingProgress === "00" ? 
-          <Snackbar
-            open={convertingProgress === "00"}
-            message={"Uploading your video before processing, please wait..."}
-            key=""
-          />
-          : null}
-      </Box>
       </div>
-      :
-      null
-    }
-    
-    <Footer />
+
+      <Footer />
 
     </div>
   ) : (
