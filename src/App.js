@@ -132,13 +132,11 @@ function App() {
               :
               <LinearProgressWithLabel value={convertingProgress} />
             }
-            {convertingProgress === "00" ? 
-              <Snackbar
-                open={convertingProgress === "00"}
-                message={"Uploading your video before processing, please wait..."}
-                key=""
-              />
-              : null}
+            <Snackbar
+              open={convertingProgress === "00"}
+              message={"Uploading your video before processing, please wait..."}
+              key=""
+            />
           </Box>
           </div>
           :
