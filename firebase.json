@@ -10,13 +10,13 @@
       "source": "**",
       "headers": [ {
         "key": "Cross-Origin-Embedder-Policy",
-        "value": "*"
+        "value": "require-corp"
       } ]
     }, {
       "source": "**",
       "headers": [ {
         "key": "Cross-Origin-Opener-Policy",
-        "value": "*"
+        "value": "same-origin"
       } ]
     } ],
     "rewrites": [
