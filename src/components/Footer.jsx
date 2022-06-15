@@ -30,7 +30,7 @@ const FooterComponent = ({}) => {
             title: 'GoLinks',
             items: [{
               title: 'go/gifin',
-              url: 'https://gif-in.web.app',
+              url: 'https://gifin.co',
               openExternal: true,
               description: ''
             }]
