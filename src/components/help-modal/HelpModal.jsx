@@ -48,7 +48,7 @@ export default function ScrollDialog() {
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        <DialogTitle id="scroll-dialog-title">How to record the screen on your Mac</DialogTitle>
+        <DialogTitle id="scroll-dialog-title">How to record the screen</DialogTitle>
         <DialogContent dividers={scroll === 'paper'}>
           <DialogContentText
             id="scroll-dialog-description"
