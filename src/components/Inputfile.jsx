@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonUI } from './Button';
 
-export const InputFile = ({ setVideo, setGif, gif, convertingProgress, video, convertToGif, setVideoDuration }) => {
+export const InputFile = ({ setVideo, setGif, gif, convertingProgress, video, convertToGif, setVideoDuration, ready }) => {
   const styles = {
     display: 'flex',
     left: '0',
@@ -36,7 +36,7 @@ export const InputFile = ({ setVideo, setGif, gif, convertingProgress, video, co
           <label class="custom-file-label" for="inputGroupFile02">{video ? 'Choose Different Video' : 'Click Here To Choose File'}</label>
         </div>
         <div class="input-group-append">
-          {video && <ButtonUI convertToGif={convertToGif} />}
+          {video && <ButtonUI convertToGif={convertToGif} ready={ready}/>}
         </div>
       </div>
     </div>

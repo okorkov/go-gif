@@ -29,7 +29,7 @@ function App() {
   const [showNotSupportedMessage, setShowNotSupportedMessage] = useState(false);
 
   const load = async () => {
-    await ffmpeg.load();
+    await ffmpeg.load()
     setReady(true);
   };
 
@@ -109,7 +109,7 @@ function App() {
   }
 
 
-  return ready ? (
+  return  (
     <div className="App" style={{textAlign: "center"}}>
       <div className="main-content-footer-excluded">
         <Header />
@@ -118,7 +118,7 @@ function App() {
         {gif && <ResultImg gif={gif} FPS={FPS} videoDuration={videoDuration}/>}
         {gif && <DownloadButton gif={gif} download={download} videoName={videoName}/>}
 
-        <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} video={video} setVideoDuration={setVideoDuration}/>
+        <InputFile setVideo={setVideo} convertToGif={convertToGif} setGif={setGif} gif={gif} convertingProgress={convertingProgress} video={video} ready={ready} setVideoDuration={setVideoDuration}/>
 
         {
           convertingProgress ?
@@ -147,21 +147,6 @@ function App() {
       <Footer />
 
     </div>
-  ) : (
-    <>
-      <div className="init-loader">
-        <InitLoader />
-      </div>
-      {
-        showNotSupportedMessage ?
-          <div style={{ textAlign: 'center', paddingTop: '5%'}}>
-            <p>Seems Like Your Browser Or Device Doesn't Support it yet...</p>
-            <p>Please Use Desktop Version Of Google Chrome / Firefox</p>
-          </div>
-          :
-          null
-      }
-    </>
   );
 }
 
