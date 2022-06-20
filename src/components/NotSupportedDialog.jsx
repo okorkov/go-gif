@@ -59,6 +59,9 @@ export default function CustomizedDialogs({open, handleClose, handleClickOpen}) 
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+        <div style={{textAlign: 'center'}}>
+          <img src="./broken.png" alt="not supported" className="not-supported-image"/>
+        </div>
           This type of device is currently not supported.
         </BootstrapDialogTitle>
         <DialogContent dividers>
