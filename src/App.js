@@ -126,7 +126,8 @@ function App() {
           <Box sx={{ width: '100%', maxWidth: '800px' }}>
             { convertingProgress === "00" ?
               <>
-                <CircularProgress />
+                {/* <CircularProgress /> */}
+                <InitLoader />
                 <p className="blockquote-footer" style={{paddingTop: '5%'}}>Conversion will start after video upload</p>
               </>
               :
