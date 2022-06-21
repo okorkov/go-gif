@@ -8,7 +8,7 @@ export const InputFile = ({ setVideo, setGif, gif, convertingProgress, video, co
     right: '0',
     margin: '50px auto',
     minWidth: '50%',
-    maxWidth: '700px',
+    maxWidth: '500px',
     borderRadius: '18px',
     padding: '10px'
   }
