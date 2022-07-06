@@ -12,7 +12,6 @@ import HelpIcon from './components/help-modal/HelpIcon';
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
-import { CircularProgress } from '@mui/material';
 import { InitLoader } from "./components/InitLoader";
 
 // Create the FFmpeg instance and load it
@@ -26,19 +25,15 @@ function App() {
   const [videoName, setVideoName] = useState("");
   const [gif, setGif] = useState();
   const [convertingProgress, setConvertingProgress] = useState(null);
-  const [showNotSupportedMessage, setShowNotSupportedMessage] = useState(false);
+
 
   const load = async () => {
-    await ffmpeg.load()
+    await ffmpeg.load();
     setReady(true);
   };
 
   useEffect(() => {
     load();
-    const FFMPEG_NOT_SUPPORTED_MESSAGE = setInterval(function () {
-      setShowNotSupportedMessage(true);
-     return  clearInterval(FFMPEG_NOT_SUPPORTED_MESSAGE);
-   }, 4000);
   }, []);
 
   const convertToGif = async () => {
@@ -58,7 +53,7 @@ function App() {
       '-i',
       'video1.mp4',
       '-filter_complex',
-      `[0:v] fps=${FPS},scale=1000:-1,split [a][b];[a] palettegen=stats_mode=full [p];[b][p] paletteuse=new=1`,
+      `[0:v] fps=${FPS},scale=w=700:h=-1,split [a][b];[a] palettegen=stats_mode=full [p];[b][p] paletteuse=new=1`,
       'out.gif'
     )
     // Read the .gif file back from the FFmpeg file system

@@ -26,6 +26,18 @@ code {
   min-height: 75vh;
 }
 
+.css-1hw9j7s:hover {
+  color: #045ca3 !important;
+  background-color: white !important;
+}
+
+.css-sghohy-MuiButtonBase-root-MuiButton-root:hover {
+  color: #045ca3 !important;
+  background-color: white !important;
+}
+
+
+
 /* Desktops and laptops ----------- */
 @media only screen 
 and (min-width : 481px) {
