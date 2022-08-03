@@ -34,7 +34,7 @@ export const InputVideo = ({ video, setFPS, setVideoDuration }) => {
         setFPS(3);
         break;
       default:
-        setFPS(2);
+        setFPS(5);
     }
   }
 
