@@ -35,8 +35,9 @@ export default function ScrollDialog() {
   return (
     <div>
       <IconButton
+        className="help-icon" 
         size="large"
-        style={{ zoom: '3', padding: '0', color: 'white'}}
+        style={{ zoom: '3', padding: '0', color: 'white', border: '1px solid #045ca3'}}
         onClick={handleClickOpen('paper')}
       >
         <HelpOutlineIcon />
