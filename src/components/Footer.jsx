@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from 'rc-footer';
 import 'rc-footer/assets/index.css';
 
-const FooterComponent = ({}) => {
+const FooterComponent = () => {
   return (
     <>
       <Footer
@@ -23,7 +23,7 @@ const FooterComponent = ({}) => {
               description: 'personal website'
             }]
           },
-          {          
+          {
             icon: (
             <img src="./linkedin_lg.png" alt="Linkedin Logo"/>
             ),
