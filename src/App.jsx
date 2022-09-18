@@ -28,11 +28,7 @@ function App() {
 
 
   const load = async () => {
-     try {
       await ffmpeg.load();
-     } catch(error) { 
-      console.error("App#load: ", error);
-     }
       setReady(true);
   };
 
