@@ -28,8 +28,12 @@ function App() {
 
 
   const load = async () => {
-    await ffmpeg.load();
-    setReady(true);
+     try {
+      await ffmpeg.load();
+     } catch(error) { 
+      console.error("App#load: ", error);
+     }
+      setReady(true);
   };
 
   useEffect(() => {
