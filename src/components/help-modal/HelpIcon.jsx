@@ -1,10 +1,8 @@
-import React from 'react';
-import HelpModal from './HelpModal';
+import HelpModal from "./HelpModal";
 
-
-const Helpicon = () => {
+function Helpicon() {
   return (
-    <div style={{position: 'fixed', right: '15px', top: '15px'}}>
+    <div style={{ position: "fixed", right: "15px", top: "15px" }}>
       <HelpModal />
     </div>
   );

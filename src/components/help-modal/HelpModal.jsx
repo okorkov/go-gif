@@ -1,17 +1,19 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import IconButton from '@mui/material/IconButton';
-import Helpcontent from './HelpContent';
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import IconButton from "@mui/material/IconButton";
+
+import { useEffect, useRef, useState } from "react";
+
+import Helpcontent from "./HelpContent";
 
 export default function ScrollDialog() {
-  const [open, setOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState('paper');
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState("paper");
 
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -22,8 +24,8 @@ export default function ScrollDialog() {
     setOpen(false);
   };
 
-  const descriptionElementRef = React.useRef(null);
-  React.useEffect(() => {
+  const descriptionElementRef = useRef(null);
+  useEffect(() => {
     if (open) {
       const { current: descriptionElement } = descriptionElementRef;
       if (descriptionElement !== null) {
@@ -35,10 +37,15 @@ export default function ScrollDialog() {
   return (
     <div>
       <IconButton
-        className="help-icon" 
+        className="help-icon"
         size="large"
-        style={{ zoom: '3', padding: '0', color: 'white', border: '1px solid #045ca3'}}
-        onClick={handleClickOpen('paper')}
+        style={{
+          zoom: "3",
+          padding: "0",
+          color: "white",
+          border: "1px solid #045ca3",
+        }}
+        onClick={handleClickOpen("paper")}
       >
         <HelpOutlineIcon />
       </IconButton>
@@ -49,8 +56,10 @@ export default function ScrollDialog() {
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        <DialogTitle id="scroll-dialog-title">How to record the screen</DialogTitle>
-        <DialogContent dividers={scroll === 'paper'}>
+        <DialogTitle id="scroll-dialog-title">
+          How to record the screen
+        </DialogTitle>
+        <DialogContent dividers={scroll === "paper"}>
           <DialogContentText
             id="scroll-dialog-description"
             ref={descriptionElementRef}
