@@ -22,6 +22,21 @@ function FooterComponent() {
           ],
         },
         {
+          icon: <img src="./calba_logo.png" alt="Carlos Alba Logo" />,
+          title: "Carlos Alba",
+          url: "https://www.carlosalba.dev",
+          description: "",
+          openExternal: true,
+          items: [
+            {
+              title: "carlosalba.dev",
+              url: "https://www.carlosalba.dev",
+              openExternal: true,
+              description: "personal website",
+            },
+          ],
+        },
+        {
           icon: <img src="./linkedin_lg.png" alt="Linkedin Logo" />,
           title: "GoLinks",
           items: [
@@ -34,7 +49,7 @@ function FooterComponent() {
           ],
         },
       ]}
-      bottom={`MIT Licensed. © ${new Date().getFullYear()} Alex Okarkau`}
+      bottom={`MIT Licensed. © ${new Date().getFullYear()}`}
     />
   );
 }
