@@ -31,16 +31,15 @@ const assingFPSBasedOffDuration = (duration, setFPS) => {
 export default function InputVideo({
   video,
   setFPS,
-  videoDuration,
   setVideoDuration,
 }) {
   useEffect(() => {
     const uploadedVideo = document.getElementById("video");
-    uploadedVideo.onloadedmetadata = () => {
-      assingFPSBasedOffDuration(videoDuration, setFPS);
-      setVideoDuration(Math.round(videoDuration));
+    uploadedVideo.onloadedmetadata = function() {
+      assingFPSBasedOffDuration(this.duration, setFPS);
+      setVideoDuration(Math.round(this.duration));
     };
-  }, [setFPS, setVideoDuration, videoDuration]);
+  }, [setFPS, setVideoDuration]);
 
   return (
     // eslint-disable-next-line jsx-a11y/media-has-caption
