@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="video to gif converter" />
+  <meta name="keywords"
+    content="video to gif converter, gif converter, make gif, video to gif, gif maker, gifmaker, gifin, gif-in, go/gifin" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+  <!-- this token is for localhost -->
+  <meta http-equiv="origin-trial"
+    content="AuKHz2ifylDpZfg7iawfCDGtilbLT+tg9CCbVG4PNSxRA1v2NtYGRKAKctmE4Us42+t1lZ3IkPO9s5/VlHy/rwIAAABgeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJmZWF0dXJlIjoiVW5yZXN0cmljdGVkU2hhcmVkQXJyYXlCdWZmZXIiLCJleHBpcnkiOjE2NTg4Nzk5OTl9">
+  <!-- this is for https://gif-in.web.app/ -->
+  <meta http-equiv="origin-trial"
+    content="AiEFceZvpkInIvv9OhCJXfMU4T22FyOl53AoPsYqe+Zbx1CtaFC3VITkqk5j7ZwjCYXqvc4IyucESi+ZJcqS3gMAAAB4eyJvcmlnaW4iOiJodHRwczovL2dpZi1pbi53ZWIuYXBwOjQ0MyIsImZlYXR1cmUiOiJVbnJlc3RyaWN0ZWRTaGFyZWRBcnJheUJ1ZmZlciIsImV4cGlyeSI6MTY1ODg3OTk5OSwiaXNTdWJkb21haW4iOnRydWV9">
+  <!-- this is for https://gifin.co/ -->
+  <meta http-equiv="origin-trial"
+    content="An3k/ZKgBpsoKaYhYm69bCPooO6oQAcPV7Qxgf9m+dLUxeX1O/BluP2wgWmzJzSNAJStkkrBknK7FibwqnkXtAgAAABfeyJvcmlnaW4iOiJodHRwczovL2dpZmluLmNvOjQ0MyIsImZlYXR1cmUiOiJVbnJlc3RyaWN0ZWRTaGFyZWRBcnJheUJ1ZmZlciIsImV4cGlyeSI6MTY2NjEzNzU5OX0=">
+  <link rel="apple-touch-icon" href="/favicon.ico" />
+  <link rel="manifest" href="/manifest.json" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1139502115941321"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>gifin.co</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyB8RKcFlUhq2W87DmBhVIQvC0B4UTkQ3CE",
+      authDomain: "gif-in.firebaseapp.com",
+      projectId: "gif-in",
+      storageBucket: "gif-in.appspot.com",
+      messagingSenderId: "249921865891",
+      appId: "1:249921865891:web:1e0919db496d02d5f59716",
+      measurementId: "G-EHX8LYTTQ7"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.10.0/dist/ffmpeg.min.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1139502115941321"
+    crossorigin="anonymous"></script>
+  <script type="module" src="/src/index.jsx"></script>
+</body>
+
+</html>
