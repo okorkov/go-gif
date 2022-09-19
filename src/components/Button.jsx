@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import Button from '@mui/material/Button';
-import NotSupportedDialog from './NotSupportedDialog';
+import { useState } from "react";
+import Button from "@mui/material/Button";
+import NotSupportedDialog from "./NotSupportedDialog";
 
-
-export const ButtonUI = ({ convertToGif, ready }) => {
+export default function ButtonUI({ convertToGif, ready }) {
   const [disabled, setDisabled] = useState(false);
 
   // dialog state
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -16,14 +15,14 @@ export const ButtonUI = ({ convertToGif, ready }) => {
   };
 
   const handleClick = () => {
-    if(ready){
-      convertToGif()
+    if (ready) {
+      convertToGif();
     } else {
       setDisabled(true);
       // open not supporting dialog
       handleClickOpen();
     }
-  }
+  };
 
   return (
     <>
@@ -31,11 +30,15 @@ export const ButtonUI = ({ convertToGif, ready }) => {
         variant="contained"
         onClick={handleClick}
         disabled={disabled}
-        style={disabled ? {} : {background: 'rgb(0, 75, 124)'}}
-        >
-          Convert
+        style={disabled ? {} : { background: "rgb(0, 75, 124)" }}
+      >
+        Convert
       </Button>
-      <NotSupportedDialog handleClickOpen={handleClickOpen} handleClose={handleClose} open={open}/>
+      <NotSupportedDialog
+        handleClickOpen={handleClickOpen}
+        handleClose={handleClose}
+        open={open}
+      />
     </>
   );
-};
+}

@@ -1,9 +1,9 @@
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 
-export const InitLoader = () => {
+export default function InitLoader() {
   return (
     <div className="init-loader">
       <CircularProgress />
     </div>
   );
-};
+}

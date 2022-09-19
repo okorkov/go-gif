@@ -1,24 +1,42 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react/jsx-props-no-spreading */
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
-import { InputFile } from "./components/InputFile";
-import { Header } from "./components/Header";
-import { ResultImg } from "./components/ResultImg";
-import { InputVideo } from "./components/InputVideo";
-import { DownloadButton } from "./components/DownloadButton";
-import Footer from "./components/Footer";
 import Box from "@mui/material/Box";
-import "react-step-progress-bar/styles.css";
-import HelpIcon from "./components/help-modal/HelpIcon";
 import LinearProgress from "@mui/material/LinearProgress";
-import Typography from "@mui/material/Typography";
 import Snackbar from "@mui/material/Snackbar";
-import { InitLoader } from "./components/InitLoader";
+import Typography from "@mui/material/Typography";
+
+import { useEffect, useState } from "react";
+import "react-step-progress-bar/styles.css";
+
+import DownloadButton from "./components/DownloadButton";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import InitLoader from "./components/InitLoader";
+import InputFile from "./components/Inputfile";
+import InputVideo from "./components/Inputvideo";
+import ResultImg from "./components/Resultimg";
+import HelpIcon from "./components/help-modal/HelpIcon";
 
 // Create the FFmpeg instance and load it
 const ffmpeg = createFFmpeg({
   log: true,
   corePath: "https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js",
 });
+
+function LinearProgressWithLabel({ value, ...rest }) {
+  return (
+    <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box sx={{ width: "100%", mr: 1 }}>
+        <LinearProgress variant="determinate" {...rest} />
+      </Box>
+      <Box sx={{ minWidth: 35 }}>
+        <Typography variant="body2" color="text.secondary">{`${Math.round(
+          value
+        )}%`}</Typography>
+      </Box>
+    </Box>
+  );
+}
 
 function App() {
   const [FPS, setFPS] = useState(10);
@@ -70,40 +88,24 @@ function App() {
     setConvertingProgress(null);
   };
 
-  const download = (e) => {
-    fetch(e.target.href, {
-      method: "GET",
-      headers: {},
-    })
-      .then((response) => {
-        response.arrayBuffer().then(function (buffer) {
-          const url = window.URL.createObjectURL(new Blob([buffer]));
-          const link = document.createElement("a");
-          link.href = url;
-          link.setAttribute("download");
-          document.body.appendChild(link);
-          link.click();
-        });
-      })
-      .catch((err) => {
-        console.log(err);
+  const download = async (e) => {
+    try {
+      const response = await fetch(e.target.href, {
+        method: "GET",
+        headers: {},
       });
+      const buffer = await response.arrayBuffer();
+      const url = window.URL.createObjectURL(new Blob([buffer]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download");
+      document.body.appendChild(link);
+      link.click();
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
   };
-
-  function LinearProgressWithLabel(props) {
-    return (
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Box sx={{ width: "100%", mr: 1 }}>
-          <LinearProgress variant="determinate" {...props} />
-        </Box>
-        <Box sx={{ minWidth: 35 }}>
-          <Typography variant="body2" color="text.secondary">{`${Math.round(
-            props.value
-          )}%`}</Typography>
-        </Box>
-      </Box>
-    );
-  }
 
   return (
     <div className="App" style={{ textAlign: "center" }}>
@@ -114,12 +116,19 @@ function App() {
           <InputVideo
             video={video}
             setFPS={setFPS}
+            videoDuration={videoDuration}
             setVideoDuration={setVideoDuration}
           />
         )}
-        {gif && <ResultImg gif={gif} FPS={FPS} videoDuration={videoDuration} />}
         {gif && (
-          <DownloadButton gif={gif} download={download} videoName={videoName} />
+          <>
+            <ResultImg gif={gif} FPS={FPS} videoDuration={videoDuration} />
+            <DownloadButton
+              gif={gif}
+              download={download}
+              videoName={videoName}
+            />
+          </>
         )}
 
         <InputFile
@@ -133,7 +142,7 @@ function App() {
           setVideoDuration={setVideoDuration}
         />
 
-        {convertingProgress ? (
+        {convertingProgress && (
           <div
             style={{
               textAlign: "center",
@@ -145,7 +154,6 @@ function App() {
             <Box sx={{ width: "100%", maxWidth: "800px" }}>
               {convertingProgress === "00" ? (
                 <>
-                  {/* <CircularProgress /> */}
                   <InitLoader />
                   <p className="blockquote-footer" style={{ paddingTop: "5%" }}>
                     Conversion will start after video upload
@@ -156,14 +164,12 @@ function App() {
               )}
               <Snackbar
                 open={convertingProgress === "00"}
-                message={
-                  "Uploading your video before processing, please wait..."
-                }
+                message="Uploading your video before processing, please wait..."
                 key=""
               />
             </Box>
           </div>
-        ) : null}
+        )}
       </div>
 
       <Footer />
