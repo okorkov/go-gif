@@ -27,7 +27,7 @@ function LinearProgressWithLabel({ value, ...rest }) {
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
       <Box sx={{ width: "100%", mr: 1 }}>
-        <LinearProgress variant="determinate" {...rest} />
+        <LinearProgress variant="determinate" value={value} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
         <Typography variant="body2" color="text.secondary">{`${Math.round(
@@ -45,7 +45,7 @@ function App() {
   const [video, setVideo] = useState();
   const [videoName, setVideoName] = useState("");
   const [gif, setGif] = useState();
-  const [convertingProgress, setConvertingProgress] = useState(null);
+  const [convertingProgress, setConvertingProgress] = useState(0);
 
   const load = async () => {
     await ffmpeg.load();
@@ -160,7 +160,7 @@ function App() {
                   </p>
                 </>
               ) : (
-                <LinearProgressWithLabel value={convertingProgress} />
+                <LinearProgressWithLabel variant="determinate" value={convertingProgress} />
               )}
               <Snackbar
                 open={convertingProgress === "00"}
