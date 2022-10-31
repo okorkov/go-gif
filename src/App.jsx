@@ -45,7 +45,7 @@ function App() {
   const [video, setVideo] = useState();
   const [videoName, setVideoName] = useState("");
   const [gif, setGif] = useState();
-  const [convertingProgress, setConvertingProgress] = useState(0);
+  const [convertingProgress, setConvertingProgress] = useState(null);
 
   const load = async () => {
     await ffmpeg.load();
