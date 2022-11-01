@@ -1,0 +1,44 @@
+[debug] [2022-11-01T21:29:33.450Z] ----------------------------------------------------------------------
+[debug] [2022-11-01T21:29:33.451Z] Command:       /Users/alexokarkau/.nvm/versions/node/v16.15.0/bin/node /Users/alexokarkau/.nvm/versions/node/v16.15.0/bin/firebase emulators:start
+[debug] [2022-11-01T21:29:33.451Z] CLI Version:   11.9.0
+[debug] [2022-11-01T21:29:33.451Z] Platform:      darwin
+[debug] [2022-11-01T21:29:33.452Z] Node Version:  v16.15.0
+[debug] [2022-11-01T21:29:33.453Z] Time:          Tue Nov 01 2022 14:29:33 GMT-0700 (Pacific Daylight Time)
+[debug] [2022-11-01T21:29:33.453Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-01T21:29:33.519Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-01T21:29:33.519Z] > authorizing via signed-in user (alex.okorkov@gmail.com)
+[info] i  emulators: Starting emulators: hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting"}}
+[debug] [2022-11-01T21:29:33.536Z] [hub] writing locator at /var/folders/6t/910rb44n5lz8_4_9t_94jn_m0000gn/T/hub-gif-in.json
+[debug] [2022-11-01T21:29:33.565Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/gif-in/sites 
+[debug] [2022-11-01T21:29:34.200Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/gif-in/sites 200
+[debug] [2022-11-01T21:29:34.200Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/gif-in/sites {"sites":[{"name":"projects/gif-in/sites/gif-in","defaultUrl":"https://gif-in.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2022-11-01T21:29:34.200Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gif-in/webApps/-/config [none]
+[debug] [2022-11-01T21:29:34.713Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gif-in/webApps/-/config 200
+[debug] [2022-11-01T21:29:34.713Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gif-in/webApps/-/config {"projectId":"gif-in","appId":"1:249921865891:web:1e0919db496d02d5f59716","storageBucket":"gif-in.appspot.com","apiKey":"AIzaSyB8RKcFlUhq2W87DmBhVIQvC0B4UTkQ3CE","authDomain":"gif-in.firebaseapp.com","messagingSenderId":"249921865891","measurementId":"G-EHX8LYTTQ7"}
+[info] i  hosting: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] ✔  hosting: Local server: http://127.0.0.1:3333 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:3333\u001b[22m\u001b[24m"}}
+[warn] ⚠  emulators: The Emulator UI is not starting, either because none of the emulated products have an interaction layer in Emulator UI or it cannot determine the Project ID. Pass the --project flag to specify a project. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI is not starting, either because none of the emulated products have an interaction layer in Emulator UI or it cannot determine the Project ID. Pass the --project flag to specify a project."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┐
+│ Emulator │ Host:Port      │
+├──────────┼────────────────┤
+│ Hosting  │ 127.0.0.1:3333 │
+└──────────┴────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[info] i  hosting: 127.0.0.1 - - [01/Nov/2022:21:29:50 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [01/Nov/2022:21:29:50 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [01/Nov/2022:21:29:50 +0000] "GET /assets/index.0b46ee7f.css HTTP/1.1" 200 - "http://127.0.0.1:3333/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [01/Nov/2022:21:29:50 +0000] \"GET /assets/index.0b46ee7f.css HTTP/1.1\" 200 - \"http://127.0.0.1:3333/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [01/Nov/2022:21:29:50 +0000] "GET /assets/index.e45468d2.js HTTP/1.1" 200 - "http://127.0.0.1:3333/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [01/Nov/2022:21:29:50 +0000] \"GET /assets/index.e45468d2.js HTTP/1.1\" 200 - \"http://127.0.0.1:3333/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [01/Nov/2022:21:29:51 +0000] "GET /aokarkau_logo.png HTTP/1.1" 200 4557 "http://127.0.0.1:3333/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [01/Nov/2022:21:29:51 +0000] \"GET /aokarkau_logo.png HTTP/1.1\" 200 4557 \"http://127.0.0.1:3333/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [01/Nov/2022:21:29:51 +0000] "GET /linkedin_lg.png HTTP/1.1" 200 9092 "http://127.0.0.1:3333/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [01/Nov/2022:21:29:51 +0000] \"GET /linkedin_lg.png HTTP/1.1\" 200 9092 \"http://127.0.0.1:3333/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [01/Nov/2022:21:29:51 +0000] "GET /calba_logo.png HTTP/1.1" 200 319681 "http://127.0.0.1:3333/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [01/Nov/2022:21:29:51 +0000] \"GET /calba_logo.png HTTP/1.1\" 200 319681 \"http://127.0.0.1:3333/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [01/Nov/2022:21:29:51 +0000] "GET /manifest.json HTTP/1.1" 200 306 "http://127.0.0.1:3333/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [01/Nov/2022:21:29:51 +0000] \"GET /manifest.json HTTP/1.1\" 200 306 \"http://127.0.0.1:3333/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [01/Nov/2022:21:29:51 +0000] "GET /favicon.ico HTTP/1.1" 200 284 "http://127.0.0.1:3333/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [01/Nov/2022:21:29:51 +0000] \"GET /favicon.ico HTTP/1.1\" 200 284 \"http://127.0.0.1:3333/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\""}}
