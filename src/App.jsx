@@ -17,10 +17,13 @@ import InputVideo from "./components/Inputvideo";
 import ResultImg from "./components/Resultimg";
 import HelpIcon from "./components/help-modal/HelpIcon";
 
+// local resource for ffmpeg-core wasm dependency
+const corePathURL = new URL('../ffmpeg_core_dist/ffmpeg-core.js', import.meta.url).href
+
 // Create the FFmpeg instance and load it
 const ffmpeg = createFFmpeg({
   log: true,
-  corePath: "https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js",
+  corePath: corePathURL
 });
 
 function LinearProgressWithLabel({ value, ...rest }) {
